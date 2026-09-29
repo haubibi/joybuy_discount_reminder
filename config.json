@@ -1,0 +1,12 @@
+{
+  "notification_channel": "wechat",
+  "seed_urls": [
+    "https://www.joybuy.nl/campaign/active/2Cqsfo3AhfJLuvtrSiDZeWd4VSAN",
+    "https://www.joybuy.nl/campaign/active/LvKvCb3brcmru5edDyrTGBFkB9i",
+    "https://www.joybuy.nl/"
+  ],
+  "min_discount_percent": 50,
+  "max_pages": 6,
+  "max_deals_per_message": 12,
+  "max_pushes_per_day": 4
+}

@@ -1,0 +1,61 @@
+name: Joybuy Deal Monitor
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Preview only (no notification)'
+        type: boolean
+        default: true
+permissions:
+  contents: write
+concurrency:
+  group: joybuy-monitor
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check offers
+        env:
+          SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python monitor.py --dry-run
+          else
+            python monitor.py
+          fi
+      - name: Save deduplication and daily quota state
+        if: always()
+        run: |
+          if [ -f state.json ]; then
+            git config user.name 'joybuy-monitor'
+            git config user.email 'joybuy-monitor@users.noreply.github.com'
+            git add state.json
+            if ! git diff --cached --quiet; then
+              git commit -m 'Update notification state'
+              git push
+            fi
+          fi
+      - name: Attach scan report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-report
+          path: report.md
+          retention-days: 7
