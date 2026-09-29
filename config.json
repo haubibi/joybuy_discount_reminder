@@ -1,5 +1,5 @@
 {
-  "notification_channel": "wechat",
+  "notification_channel": "email",
   "seed_urls": [
     "https://www.joybuy.nl/campaign/active/2Cqsfo3AhfJLuvtrSiDZeWd4VSAN",
     "https://www.joybuy.nl/campaign/active/LvKvCb3brcmru5edDyrTGBFkB9i",
