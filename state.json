@@ -1,0 +1,56 @@
+{
+  "seen": {
+    "coupon:cd19041445529b7de0e1827f": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "coupon:5665cb5b54ad5e1c68020131": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "coupon:3d44330fc16483d480599b25": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "coupon:7eb7e940cdbeebe72f593f46": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "coupon:b84de2310e669a029982e8a7": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "coupon:297c57cfc01fd8aa4c569cc6": {
+      "price": null,
+      "sent_at": "2026-09-30"
+    },
+    "sku:100002960003824": {
+      "price": 1.83,
+      "sent_at": "2026-09-30"
+    },
+    "sku:10056719": {
+      "price": 13.91,
+      "sent_at": "2026-09-30"
+    },
+    "sku:100631659": {
+      "price": 9.56,
+      "sent_at": "2026-09-30"
+    },
+    "sku:10209316": {
+      "price": 8.99,
+      "sent_at": "2026-09-30"
+    },
+    "sku:100002960002205": {
+      "price": 1.99,
+      "sent_at": "2026-09-30"
+    },
+    "sku:10212647": {
+      "price": 65.99,
+      "sent_at": "2026-09-30"
+    }
+  },
+  "days": {
+    "2026-09-30": 1
+  },
+  "error_day": "2026-09-30"
+}
